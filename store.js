@@ -8,6 +8,7 @@
 
     store.addContact = function(contact) {
         store.contacts.push(contact);
+        store.flush()
     };
 
     store.removeContact = function(contact) {
@@ -18,10 +19,20 @@
                 break;
             }
         }
+        store.flush();
     };
 
     store.getContacts = function() {
         return store.contacts;
+    };
+
+    store.flush = function() {
+        global.localStorage.setItem("contacts", JSON.stringify(store.contacts));
+    };
+
+    store.init = function() {
+        var data = global.localStorage.getItem("contacts");
+        store.contacts = JSON.parse(data);
     };
 
     global.store = store;
