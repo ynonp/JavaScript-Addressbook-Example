@@ -7,10 +7,7 @@
     };
 
     store.addContact = function(contact) {
-        console.log('add contact: ');
-        console.dir(contact);
         store.contacts.push(contact);
-        console.log('ok');
     };
 
     store.removeContact = function(contact) {
